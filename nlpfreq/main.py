@@ -1,6 +1,6 @@
 import click
-from core.input_handler import *
-from core.text_processor import *
+from nlpfreq.core.input_handler import *
+from nlpfreq.core.text_processor import *
 import json
 import os
 from tabulate import tabulate
@@ -43,7 +43,7 @@ def load_data_callback(mode=None, source=None):
 
 @cli.command()
 @click.option('--export', is_flag=True, default=False, help='Export data to files')
-def show_data(export):
+def show_metrics(export):
     try:
         load_data_callback()
 
@@ -99,8 +99,8 @@ def get_unique_filename(folder, filename):
 
 
 @cli.command()
-@click.option('--n', default=10, help='Number of rows to display')
-def filter_rows(n):
+@click.option('--n', default=10, help='Top n highest occuring words')
+def limit(n):
     processor = load_data_callback()
 
     try:

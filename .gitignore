@@ -159,5 +159,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# pycache
+# personal and pycache
 nlpfreq/core/__pycache__/
+nlpfreq/morph-table.txt
+nlpfreq/stats.json

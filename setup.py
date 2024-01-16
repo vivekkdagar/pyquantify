@@ -1,8 +1,9 @@
 from setuptools import setup, find_packages
+import os
 
 setup(
     name='nlpfreq',
-    version='0.1',
+    version='1.0',
     packages=find_packages(),
     install_requires=[
         'click',
@@ -16,16 +17,12 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'your_command_name = your_module_name:cli',
+            'nlpfreq = nlpfreq.main:cli',
         ],
     },
     author='Vivek Dagar',
-    author_email='vivekdagar',
-    description='Description of your project',
-    url='https://github.com/yourusername/your_project_name',
-    classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-    ],
+    author_email='vivekdagar2017@gmail.com',
+    description='Advanced Feature-Rich CLI-based Word Frequency Analysis Tool',
+    url='https://github.com/vivekkdagar/NLPFreq',
+    license='GNU General Public License v3.0',
 )
