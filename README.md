@@ -134,9 +134,9 @@ nlpfreq generate-wordfreq-plot --export
 
 ## :question: FAQ
 
-### Q: What is NLPFreq's Semantic Profiler?
+### Q: What is NLPFreq?
 
-A: NLPFreq's Semantic Profiler is a tool designed for in-depth analysis of textual data, focusing on extracting meaning and linguistic insights. It provides features like word frequency, morphology, and metrics generation, enhancing data exploration and visualization.
+A: NLPFreq is a tool designed for in-depth analysis of textual data, focusing on extracting meaning and linguistic insights. It provides features like word frequency, morphology, and metrics generation, enhancing data exploration and visualization.
 
 ### Q: Why Develop NLPFreq as a Semantic Profiler?
 
