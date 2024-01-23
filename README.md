@@ -21,7 +21,7 @@
 ## :star2: About the Project
 
 ### :camera: Screenshots
-<div align="center"> <a href=""><img src="s" alt='image' width='800'/></a> </div>
+<div align="center"> <a href=""><img src="https://github.com/vivekkdagar/pyquantify/blob/main/assets/demo.png" alt='image' width='800'/></a> </div>
 
 
 ### :dart: Features
