@@ -17,7 +17,7 @@ mode_option = click.option('--mode', type=click.Choice(['raw', 'file', 'website'
 def cli(git):
     if git:
         click.echo("Going to git page...")
-        webbrowser.open("https://github.com/vivekkdagar/NLPFreq")
+        webbrowser.open("https://github.com/vivekkdagar/pyquantify")
         return
     else:
         pass
