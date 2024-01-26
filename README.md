@@ -93,7 +93,83 @@ pip install dist/*.tar.gz
 pyquantify
 ```
 <h2><a id="use"> :book: Usage Guide</a></h3>
-usage guide here
+
+Pyquantify provides several commands for analyzing and visualizing text data. Below is a guide on how to use the key functionalities:
+
+### 1. Generate Word Frequency Plot
+
+To generate a word frequency plot for the top 20 words in the text, use the following command:
+
+```bash
+pyquantify generate-freq_plot --mode [raw/file/website] --export
+```
+
+- `--mode`: Specify the data loading mode (raw input, file, or website).
+- `--export`: Optional flag to export the frequency plot to a file.
+<br>
+
+### 2. Generate Word Cloud
+
+Create and display a word cloud visualization of the processed text data with the following command:
+
+```bash
+pyquantify generate-wordcloud --mode [raw/file/website] --export
+```
+
+- `--mode`: Specify the data loading mode (raw input, file, or website).
+- `--export`: Optional flag to export the word cloud to a file.
+<br>
+
+### 3. Search for a Specific Word in Morphological Analysis
+
+To search for a specific word in the detailed table of word morphology, use the following command:
+
+```bash
+pyquantify search-word --mode [raw/file/website] --word [desired_word]
+```
+
+- `--mode`: Specify the data loading mode (raw input, file, or website).
+- `--word`: Specify the word you want to search for.
+<br>
+
+### 4. Text Analysis and Metrics Generation
+
+Analyze the text and generate key metrics, including morphology analysis, with the following command:
+
+```bash
+pyquantify analyze --mode [raw/file/website] --n [number_of_rows] --export
+```
+
+- `--mode`: Specify the data loading mode (raw input, file, or website).
+- `--n`: Optional parameter to display a specific number of rows in the analysis.
+- `--export`: Optional flag to export the analysis results to files.
+<br>
+
+### 5. Summarize Text
+
+Summarize the text using a BERT Extractive Summarizer with the following command:
+
+```bash
+pyquantify summarize --mode [raw/file/website] --export
+```
+
+- `--mode`: Specify the data loading mode (raw input, file, or website).
+- `--export`: Optional flag to export the summary to a file.
+<br>
+
+### Additional Commands
+
+- View the Pyquantify GitHub page:
+```bash
+pyquantify --git
+```
+
+Feel free to explore additional options and functionalities by checking the help documentation for each command:
+
+```bash
+pyquantify [command] --help
+```
+</div>
 
 <h2><a id="map"> :compass: Roadmap</a></h2>
 
@@ -127,3 +203,6 @@ NLPFreq felt limiting and didn't capture the full scope of the project. Pyquanti
 <h2> <a id = "ack">:gem: Acknowledgements</a></h2>
 
 - [NeuralNine's Publish Your Own Python Package](https://www.youtube.com/watch?v=tEFkHEKypLI)
+
+<hr/>
+**Note:** Pyquantify has undergone thorough testing on Linux, and its functionality is confirmed to work seamlessly. However, it's important to note that when running on Windows Subsystem for Linux (WSL), certain features may have limited functionality due to the absence of the complete Linux toolset in the WSL environment.
