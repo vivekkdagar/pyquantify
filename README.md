@@ -161,7 +161,7 @@ pyquantify summarize --mode [raw/file/website] --export
 
 - View the Pyquantify GitHub page:
 ```bash
-pyquantify --git
+pyquantify --git [any command with its parameters]
 ```
 
 Feel free to explore additional options and functionalities by checking the help documentation for each command:
