@@ -10,23 +10,21 @@
   
 # :notebook_with_decorative_cover: Table of Contents
 
-- [:notebook_with_decorative_cover: Table of Contents](#notebook_with_decorative_cover-table-of-contents)
-- [:star2: About the Project](#star2-about-the-project)
+- [:camera: Demo screenshot](#srn)
 - [:toolbox: Getting Started](#toolbox-getting-started)
 - [:toolbox: Installation](#toolbox-installation)
 - [:compass: Roadmap](#compass-roadmap)
-- [:grey_question: FAQ](#grey_question-faq)
-- [:warning: License](#warning-license)
+- [:grey_question: FAQ](#ques)
 - [:gem: Acknowledgements](#ack)
 
 
-## :star2: About the Project
 
-### :camera: Screenshots
+<h2><a id="srn"> :camera:</a> Demo screenshot</h2>
 <div align="center"> <a href=""><img src="https://github.com/vivekkdagar/pyquantify/blob/main/assets/demo.png" alt='image' width='800'/></a> </div>
 
 
-### :dart: Features
+<h2><a id="feat">:dart:</a> Features</h2>
+
 - **Data Loading**: Load text data from various sources, including raw input, files, and websites, with interactive prompts for user input.
 - **Text Preprocessing**: Tokenize and clean the text data, removing punctuation and converting words to lowercase.
 - **Metrics Generation**: Calculate and display key metrics, including character count with and without spaces, sentence count, word count, and paragraph count.
@@ -38,7 +36,7 @@
 - **Summarize text**: It can now summarize your text and utilizes a BERT Extractive Summarizer to achieve it.
 
 
-## :toolbox: Getting Started
+<h2><a id="strt"> :toolbox:</a> Getting Started</h2>
 
 ### :bangbang: Prerequisites
 
@@ -48,9 +46,9 @@ Ensure you meet the following requirements before installation (if you're buildi
 pip install -r requirements.txt
 ```
 
-## :toolbox: Installation
+<h2><a id="insta"> :toolbox:</a> Installation</h2>
 
-### Install from PyPI
+<h3><a id="pypi"> Install from PyPI</a></h3>
 
 You can install the `pyquantify` package directly from PyPI using the following command:
 
@@ -58,7 +56,7 @@ You can install the `pyquantify` package directly from PyPI using the following 
 pip install pyquantify
 ```
 
-### Build from Source
+<h3><a id="src"> Build from Source</a></h3>
 
 1. Clone the project:
 
@@ -85,7 +83,7 @@ pip install dist/*.tar.gz
 pyquantify
 ```
 
-## :compass: Roadmap
+<h2><a id="map"> :compass: Roadmap</a></h2>
 
 * [ ] Minimize training time for the multinomial NB model on subsequent project uses by leveraging pre-trained models.
 * [ ] Diversifying export options to include formats such as CSV and xlsx.
@@ -95,7 +93,7 @@ pyquantify
 
 
 
-## :grey_question: FAQ
+<h2><a id="ques">:grey_question: FAQ</a>/h2>
 
 ### Q: What is Pyquantify?
 
