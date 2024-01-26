@@ -7,15 +7,17 @@
 
 
 </div>
-
+  
 # :notebook_with_decorative_cover: Table of Contents
 
-- [About the Project](#star2-about-the-project)
-- [Roadmap](#compass-roadmap)
-- [FAQ](#grey_question-faq)
-- [License](#warning-license)
-- [Contact](#handshake-contact)
-- [Acknowledgements](#gem-acknowledgements)
+- [:notebook_with_decorative_cover: Table of Contents](#notebook_with_decorative_cover-table-of-contents)
+- [:star2: About the Project](#star2-about-the-project)
+- [:toolbox: Getting Started](#toolbox-getting-started)
+- [:toolbox: Installation](#toolbox-installation)
+- [:compass: Roadmap](#compass-roadmap)
+- [:grey_question: FAQ](#grey_question-faq)
+- [:warning: License](#warning-license)
+- [:gem: Acknowledgements](#ack)
 
 
 ## :star2: About the Project
@@ -92,9 +94,6 @@ pyquantify
 * [ ] Ensure compatability with Windows operating system.
 
 
-### :scroll: Code of Conduct
-
-Please read the [Code of Conduct](https://github.com/vivekkdagar/pyquantify/blob/master/CODE_OF_CONDUCT.md)
 
 ## :grey_question: FAQ
 
@@ -115,11 +114,6 @@ Originally conceived as a word frequency counter, Pyquantify's development took 
 NLPFreq felt limiting and didn't capture the full scope of the project. Pyquantify more accurately reflects its capabilities as a Python-based tool for quantitative data analysis.
 
 
-
-## :warning: License
-
-Distributed under the MIT License. See LICENSE for more information.
-
-## :gem: Acknowledgements
+<h2> <a id = "ack" href="ack">:gem: Acknowledgements</a></h2>
 
 - [NeuralNine's Publish Your Own Python Package](https://www.youtube.com/watch?v=tEFkHEKypLI)
