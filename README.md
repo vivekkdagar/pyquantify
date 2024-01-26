@@ -27,15 +27,23 @@
 
 <h2><a id="feat">:dart:</a> Features</h2>
 
-- **Data Loading**: Load text data from various sources, including raw input, files, and websites, with interactive prompts for user input.
-- **Text Preprocessing**: Tokenize and clean the text data, removing punctuation and converting words to lowercase.
-- **Metrics Generation**: Calculate and display key metrics, including character count with and without spaces, sentence count, word count, and paragraph count.
-- **Morphological Analysis**: Generate a detailed table of word morphology, including word rank, original form, lemmatized form, part-of-speech (POS) tag, percentage occurrence, and count.
-- **Export Functionality**: Optionally export the generated metrics, frequency tables, and visualizations to files.
-- **Word Cloud Visualization**: Create and display a word cloud visualization of the processed text data.
-- **Word Frequency Chart**: Generate and visualize the frequency of the top 20 words in the text.
-- **Interactive Commands**: Utilize command-line interface commands to perform actions such as displaying metrics, limiting results, searching for specific words, and generating visualizations.
-- **Summarize text**: It can now summarize your text and utilizes a BERT Extractive Summarizer to achieve it.
+1. **Data Loading**: Load text data from raw input, files, or websites with interactive prompts for user input.
+
+2. **Text Preprocessing**: Tokenize and clean the text data by removing punctuation and converting words to lowercase.
+
+3. **Metrics Generation**: Calculate and display key metrics, including character count (with and without spaces), sentence count, word count, and paragraph count.
+
+4. **Morphological Analysis**: Generate a detailed table of word morphology, including word rank, original form, lemmatized form, part-of-speech (POS) tag, percentage occurrence, and count.
+
+5. **Export Functionality**: Optionally export generated metrics, frequency tables, and visualizations to files.
+
+6. **Word Cloud Visualization**: Create and display a word cloud visualization of processed text data.
+
+7. **Word Frequency Chart**: Generate and visualize the frequency of the top 20 words in the text.
+
+8. **Interactive Commands**: Utilize command-line interface commands for actions like displaying metrics, limiting results, searching for specific words, and generating visualizations.
+
+9. **Summarize Text**: Summarize text using a BERT Extractive Summarizer.
 
 
 <h2><a id="strt"> :toolbox:</a> Getting Started</h2>
