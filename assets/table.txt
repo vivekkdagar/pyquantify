@@ -1,0 +1,96 @@
++------+----------------+-----------------+------------------------------------------+-----------+--------------------+-------+
+| Rank |      Word      | Lemmatized Form |                 POS Tag                  | NER Label |    % Occurrence    | Count |
++------+----------------+-----------------+------------------------------------------+-----------+--------------------+-------+
+|  1   |      and       |       and       |         Coordinating conjunction         |    N/A    | 166.66666666666669 |  10   |
+|  2   |      the       |       the       |                Determiner                |    N/A    |       100.0        |   6   |
+|  3   |       of       |       of        | Preposition or subordinating conjunction |    N/A    | 83.33333333333334  |   5   |
+|  4   |      NLP       |       NLP       |                   Noun                   |    ORG    | 66.66666666666666  |   4   |
+|  5   |    language    |    language     |                   Noun                   |    N/A    | 66.66666666666666  |   4   |
+|  6   |       to       |       to        |                    to                    |    N/A    | 66.66666666666666  |   4   |
+|  7   |       is       |       is        |                   Verb                   |    N/A    | 33.33333333333333  |   2   |
+|  8   |       a        |        a        |                Determiner                |    N/A    | 33.33333333333333  |   2   |
+|  9   |      that      |      that       | Preposition or subordinating conjunction |    N/A    | 33.33333333333333  |   2   |
+|  10  |    between     |     between     | Preposition or subordinating conjunction |    N/A    | 33.33333333333333  |   2   |
+|  11  |   computers    |    computer     |                   Noun                   |    N/A    | 33.33333333333333  |   2   |
+|  12  |      more      |      more       |                  Adverb                  |    N/A    | 33.33333333333333  |   2   |
+|  13  |  translation   |   translation   |                   Noun                   |    N/A    | 33.33333333333333  |   2   |
+|  14  |       in       |       in        | Preposition or subordinating conjunction |    N/A    | 33.33333333333333  |   2   |
+|  15  |    Natural     |     Natural     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  16  |    Language    |    Language     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  17  |   Processing   |   Processing    |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  18  |     field      |      field      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  19  |   artificial   |   artificial    |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  20  |  intelligence  |  intelligence   |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  21  |    focuses     |      focus      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  22  |       on       |       on        | Preposition or subordinating conjunction |    N/A    | 16.666666666666664 |   1   |
+|  23  |  interaction   |   interaction   |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  24  |     human      |      human      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  25  |       It       |       It        |                 Pronoun                  |    N/A    | 16.666666666666664 |   1   |
+|  26  |    involves    |    involves     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  27  |  development   |   development   |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  28  |   algorithms   |    algorithm    |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  29  |     models     |      model      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  30  |     enable     |     enable      |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  31  |    machines    |     machine     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  32  |   understand   |   understand    |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  33  |   interpret    |    interpret    |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  34  |    generate    |    generate     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  35  |  encompasses   |   encompasses   |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  36  |      wide      |      wide       |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  37  |     range      |      range      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  38  |     tasks      |      task       |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  39  |      from      |      from       | Preposition or subordinating conjunction |    N/A    | 16.666666666666664 |   1   |
+|  40  |     basic      |      basic      |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  41  |      ones      |       one       |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  42  |      like      |      like       | Preposition or subordinating conjunction |    N/A    | 16.666666666666664 |   1   |
+|  43  |      text      |      text       |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  44  | classification | classification  |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  45  |   sentiment    |    sentiment    |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  46  |    analysis    |    analysis     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  47  |    complex     |     complex     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  48  |   processes    |     process     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  49  |      such      |      such       |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  50  |       as       |        a        | Preposition or subordinating conjunction |    N/A    | 16.666666666666664 |   1   |
+|  51  | summarization  |  summarization  |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  52  |      The       |       The       |                Determiner                |    N/A    | 16.666666666666664 |   1   |
+|  53  |      goal      |      goal       |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  54  |     bridge     |     bridge      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  55  |      gap       |       gap       |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  56  |    natural     |     natural     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  57  |    nuanced     |     nuanced     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  58  |      way       |       way       |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  59  |     humans     |      human      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  60  |  communicate   |   communicate   |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  61  |   structured   |   structured    |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  62  |    logical     |     logical     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  63  |     world      |      world      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  64  |  applications  |   application   |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  65  |      are       |       are       |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  66  |   widespread   |   widespread    |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  67  |     found      |      found      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  68  |    virtual     |     virtual     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  69  |   assistants   |    assistant    |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  70  |    chatbots    |    chatbots     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  71  |    services    |     service     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  72  |    Advances    |    Advances     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  73  |      deep      |      deep       |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  74  |    learning    |    learning     |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  75  |     neural     |     neural      |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  76  |    networks    |     network     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  77  |      have      |      have       |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  78  | significantly  |  significantly  |                  Adverb                  |    N/A    | 16.666666666666664 |   1   |
+|  79  |    enhanced    |    enhanced     |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  80  |    accuracy    |    accuracy     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  81  |  capabilities  |   capability    |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  82  |    systems     |     system      |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  83  |     making     |     making      |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  84  |      them      |      them       |                 Pronoun                  |    N/A    | 16.666666666666664 |   1   |
+|  85  |    integral    |    integral     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  86  |    various     |     various     |                Adjective                 |    N/A    | 16.666666666666664 |   1   |
+|  87  |   industries   |    industry     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  88  |   including    |    including    |                   Verb                   |    N/A    | 16.666666666666664 |   1   |
+|  89  |   healthcare   |   healthcare    |                   Noun                   |    ORG    | 16.666666666666664 |   1   |
+|  90  |    finance     |     finance     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  91  |    customer    |    customer     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
+|  92  |    service     |     service     |                   Noun                   |    N/A    | 16.666666666666664 |   1   |
++------+----------------+-----------------+------------------------------------------+-----------+--------------------+-------+

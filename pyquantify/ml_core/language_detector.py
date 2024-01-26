@@ -19,7 +19,7 @@ class LanguageDetector:
 
     def wake(self):
         warnings.simplefilter("ignore")
-        data = pd.read_csv("assets/Language Detection.csv")
+        data = pd.read_csv("Language Detection.csv")
         data["Language"].value_counts()
         self.X = data["Text"]
         self.y = data["Language"]
