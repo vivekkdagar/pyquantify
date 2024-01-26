@@ -114,6 +114,6 @@ Originally conceived as a word frequency counter, Pyquantify's development took 
 NLPFreq felt limiting and didn't capture the full scope of the project. Pyquantify more accurately reflects its capabilities as a Python-based tool for quantitative data analysis.
 
 
-<h2> <a id = "ack" href="ack">:gem: Acknowledgements</a></h2>
+<h2> <a id = "ack">:gem: Acknowledgements</a></h2>
 
 - [NeuralNine's Publish Your Own Python Package](https://www.youtube.com/watch?v=tEFkHEKypLI)
