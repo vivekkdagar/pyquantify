@@ -11,9 +11,11 @@
 # :notebook_with_decorative_cover: Table of Contents
 
 - [:camera: Demo screenshot](#srn)
-- [:toolbox: Getting Started](#toolbox-getting-started)
-- [:toolbox: Installation](#toolbox-installation)
-- [:compass: Roadmap](#compass-roadmap)
+- [:dart: Features](#feat)
+- [:toolbox: Getting Started](#strt)
+- [:toolbox: Installation](#insta)
+- [:book: Usage Guide](#use)
+- [:compass: Roadmap](#map)
 - [:grey_question: FAQ](#ques)
 - [:gem: Acknowledgements](#ack)
 
@@ -82,6 +84,8 @@ pip install dist/*.tar.gz
 ```bash
 pyquantify
 ```
+<h2><a id="use"> :book: Usage Guide</a></h3>
+usage guide here
 
 <h2><a id="map"> :compass: Roadmap</a></h2>
 
@@ -93,7 +97,7 @@ pyquantify
 
 
 
-<h2><a id="ques">:grey_question: FAQ</a>/h2>
+<h2><a id="ques">:grey_question: FAQ</a></h2>
 
 ### Q: What is Pyquantify?
 
