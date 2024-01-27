@@ -160,6 +160,4 @@ cython_debug/
 #.idea/
 
 # personal and pycache
-nlpfreq/core/__pycache__/
-nlpfreq/morph-table.txt
-nlpfreq/stats.json
+.idea/

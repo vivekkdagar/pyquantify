@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.preprocessing import LabelEncoder
+import joblib  # Import the joblib library for model serialization
 
 
 class LanguageDetector:
@@ -34,6 +35,12 @@ class LanguageDetector:
         self.X = self.cv.fit_transform(self.data_list).toarray()
         x_train, x_test, y_train, y_test = train_test_split(self.X, self.y, test_size=0.20)
         self.model.fit(x_train, y_train)
+
+    def save_model(self, filename="model.joblib"):
+        joblib.dump((self.le, self.cv, self.model), filename)
+
+    def load_model(self, filename="model.joblib"):
+        self.le, self.cv, self.model = joblib.load(filename)
 
     def predict(self):
         x = self.cv.transform([self.dataset]).toarray()
