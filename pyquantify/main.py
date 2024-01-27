@@ -25,32 +25,30 @@ def cli(git):
 
 @cli.command()
 @mode_option
-@click.option('--export', is_flag=True, default=False, help='Export frequency plot to file')
-def generate_freq_plot(mode, export):
+@click.option('--export', is_flag=True, default=False, help='Export visualizations to files')
+@click.option('--freq-chart', is_flag=True, default=False, help='Generate word frequency chart only')
+@click.option('--wordcloud', is_flag=True, default=False, help='Generate word cloud only')
+def visualize(mode, export, freq_chart, wordcloud):
+    if not (freq_chart or wordcloud):
+        click.echo("Error: Please specify at least one of --freq-chart or --wordcloud")
+        return
+
     data = load(mode)
 
     parser = TextProcessor(data)
     parser.preprocess()
 
     export_folder = ExportManager.get_export_folder()
-    export_path_img = ExportManager(export_folder).generate_filename('freqchart.jpg')
-    parser.plot_word_frequency_chart(export=export, output_path=export_path_img)
-    click.echo("Frequency plot of top 20 words generated!")
 
+    if freq_chart:
+        export_path_freq_chart = ExportManager(export_folder).generate_filename('freqchart.jpg')
+        parser.plot_word_frequency_chart(export=export, output_path=export_path_freq_chart)
+        click.echo("Frequency plot of top 20 words generated!")
 
-@cli.command()
-@mode_option
-@click.option('--export', is_flag=True, default=False, help='Export wordcloud to files')
-def generate_wordcloud(mode, export):
-    data = load(mode)
-
-    parser = TextProcessor(data)
-    parser.preprocess()
-
-    export_folder = ExportManager.get_export_folder()
-    export_path_img = ExportManager(export_folder).generate_filename('wordcloud.jpg')
-    parser.plot_wordcloud(export=export, output_path=export_path_img)
-    click.echo("Wordcloud generated!")
+    if wordcloud:
+        export_path_wordcloud = ExportManager(export_folder).generate_filename('wordcloud.jpg')
+        parser.plot_wordcloud(export=export, output_path=export_path_wordcloud)
+        click.echo("Wordcloud generated!")
 
 
 @cli.command()
