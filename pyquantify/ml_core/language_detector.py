@@ -47,3 +47,6 @@ class LanguageDetector:
         lang = self.model.predict(x)
         lang = self.le.inverse_transform(lang)
         return lang[0]
+
+    def __str__(self):
+        return self.predict()

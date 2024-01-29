@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import spacy
 from pyquantify.misc import expand_pos_tag
+from pyquantify.ml_core.sentiment_analyser import SentimentAnalyzer
 
 
 class TextProcessor:
@@ -14,6 +15,7 @@ class TextProcessor:
         self.cleaned_data = list()
         self.metrics = None
         self.morphological_data = None
+        self.sentiment_data = str()
 
     def preprocess(self):
         sentences = tokenizer.sent_tokenize(self.text.strip())
@@ -58,6 +60,10 @@ class TextProcessor:
 
         headers = ["Rank", "Word", "Lemmatized Form", "POS Tag", "NER Label", "% Occurrence", "Count"]
         self.morphological_data = tabulate(table_data, headers=headers, tablefmt="pretty")
+
+    def generate_sentiment_data(self):
+        analyzer = SentimentAnalyzer(tokenizer.sent_tokenize(self.text))
+        self.sentiment_data = str(analyzer)
 
     def plot_wordcloud(self, export=False, output_path=None):
         preprocessed_text = ' '.join([' '.join(words) for words in self.cleaned_data])

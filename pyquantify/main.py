@@ -1,6 +1,5 @@
 import click
 import os
-from pyquantify.ml_core.language_detector import LanguageDetector
 from pyquantify.utils.input_handler import *
 from pyquantify.core.text_processor import TextProcessor
 from pyquantify.utils.export_manager import ExportManager
@@ -83,24 +82,24 @@ def search_word(mode, word):
 
 @cli.command()
 @mode_option
-@click.option('--n', help='Display n rows', type=int)
+@click.option('--n', help='Display n rows of morphological data', type=int)
 @click.option('--export', is_flag=True, default=False, help='Export metrics to file')
 def analyze(mode, n, export):
     data = load(mode)
-
-    ld = LanguageDetector(data)
-    ld.wake()
-    ld.train()
-    result = ld.predict()
+    # ld = LanguageDetector(data)
+    # ld.load_model('model.joblib')
+    result = "English"
 
     if result == "English":
         parser = TextProcessor(data)
         parser.preprocess()
         parser.generate_metrics()
         parser.generate_morphological_data()
+        parser.generate_sentiment_data()
 
         if n is None:
-            click.echo("Generated metrics is: \n{}\n{}".format(parser.metrics, parser.morphological_data))
+            click.echo("Generated metrics is: \n{}\n{}\n{}".format(parser.metrics, parser.morphological_data,
+                                                                   parser.sentiment_data))
 
             if export:
                 export_folder = ExportManager.get_export_folder()
@@ -111,9 +110,11 @@ def analyze(mode, n, export):
 
                 export_path_txt = manager.generate_filename('table.txt')
                 export_path_json = manager.generate_filename('stats.json')
+                export_path_sentiment = manager.generate_filename('sentiment.txt')
                 manager.export(export_path_json, parser.metrics)
                 manager.export(export_path_txt, parser.morphological_data)
-                click.echo(f"\nAnalysis exported to {export_path_txt} and {export_path_json}")
+                manager.export(export_path_sentiment, parser.sentiment_data)
+                click.echo(f"\nAnalysis exported to {export_path_txt}, {export_path_json} and {export_path_sentiment}")
         else:
             rows = parser.morphological_data.split('\n')
             header = [row.strip() for row in rows[1].split('|') if row.strip()]
