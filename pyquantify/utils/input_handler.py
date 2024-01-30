@@ -26,7 +26,7 @@ def load_file(source):
         return None
 
 
-def load(mode):
+def load_data(mode):
     if mode == 'raw':
         return input("Enter the raw text: ")
     elif mode == 'website':

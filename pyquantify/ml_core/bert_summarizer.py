@@ -10,8 +10,8 @@ class CustomSummarizer:
 
     def summarize(self, loc=None):
         summary = self.parser(self.text)
+        dest = None
         if loc:
             manager = ExportManager(loc)
-            self.export_path_txt = manager.generate_filename('summary.txt')
-            manager.export(self.export_path_txt, summary)
-        return summary
+            dest = manager.export('summary.txt', summary)
+        return [summary, dest]

@@ -8,11 +8,6 @@ setup(
         'click',
         'nltk',
         'tabulate',
-        'wordcloud',
-        'matplotlib',
-        'seaborn',
-        'requests',
-        'beautifulsoup4',
     ],
     entry_points={
         'console_scripts': [

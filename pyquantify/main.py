@@ -1,14 +1,15 @@
-import click
-import os
-from pyquantify.utils.input_handler import *
-from pyquantify.core.text_processor import TextProcessor
-from pyquantify.utils.export_manager import ExportManager
-from tabulate import tabulate
-from pyquantify.ml_core.bert_summarizer import CustomSummarizer
+import warnings
 import webbrowser
+from tabulate import tabulate
+import click
+from .utils.input_handler import load_data
+from .ml_core.bert_summarizer import CustomSummarizer
+from .utils.export_manager import *
+from .core.text_processor import TextProcessor
 
-mode_option = click.option('--mode', type=click.Choice(['raw', 'file', 'website']), required=True,
-                           help='Data loading mode (raw, file, website)')
+mode_option = click.option("--mode", type=click.Choice(["raw", "file", "website"]), required=True,
+                           help="Data loading mode (raw, file, website)")
+export_option = click.option("--export", is_flag=True, default=False, help="Export to file")
 
 
 @click.group()
@@ -17,53 +18,22 @@ def cli(git):
     if git:
         click.echo("Going to git page...")
         webbrowser.open("https://github.com/vivekkdagar/pyquantify")
-        return
-    else:
-        pass
-
-
-@cli.command()
-@mode_option
-@click.option('--export', is_flag=True, default=False, help='Export visualizations to files')
-@click.option('--freq-chart', is_flag=True, default=False, help='Generate word frequency chart only')
-@click.option('--wordcloud', is_flag=True, default=False, help='Generate word cloud only')
-def visualize(mode, export, freq_chart, wordcloud):
-    if not (freq_chart or wordcloud):
-        click.echo("Error: Please specify at least one of --freq-chart or --wordcloud")
-        return
-
-    data = load(mode)
-
-    parser = TextProcessor(data)
-    parser.preprocess()
-
-    export_folder = ExportManager.get_export_folder()
-
-    if freq_chart:
-        export_path_freq_chart = ExportManager(export_folder).generate_filename('freqchart.jpg')
-        parser.plot_word_frequency_chart(export=export, output_path=export_path_freq_chart)
-        click.echo("Frequency plot of top 20 words generated!")
-
-    if wordcloud:
-        export_path_wordcloud = ExportManager(export_folder).generate_filename('wordcloud.jpg')
-        parser.plot_wordcloud(export=export, output_path=export_path_wordcloud)
-        click.echo("Wordcloud generated!")
+        exit()
 
 
 @cli.command()
 @mode_option
 @click.option('--word', prompt=True, required=True, help='Word to search for', type=str)
 def search_word(mode, word):
-    data = load(mode)
+    data = load_data(mode)
 
     parser = TextProcessor(data)
     parser.preprocess()
 
     parser.generate_morphological_data()
-
     morphological_data = parser.morphological_data
-    rows = morphological_data.split('\n')
 
+    rows = morphological_data.split('\n')
     header = [row.strip() for row in rows[1].split('|') if row.strip()]
     result_row = None
 
@@ -77,67 +47,117 @@ def search_word(mode, word):
         result_table = tabulate([result_data], headers=header, tablefmt="pipe")
         click.echo(result_table)
     else:
-        click.echo(f"Word '{word}' not found in morphological table.")
+        click.echo(f"\nWord '{word}' not found in morphological table.")
+
+
+@cli.command()
+@mode_option
+@export_option
+@click.option('--freq-chart', is_flag=True, default=False, help='Generate word frequency chart only')
+@click.option('--wordcloud', is_flag=True, default=False, help='Generate word cloud only')
+def visualize(mode, export, freq_chart, wordcloud):
+    if not (freq_chart or wordcloud):
+        click.echo("Error: Please specify at least one of --freq-chart or --wordcloud")
+        return
+
+    data = load_data(mode)
+
+    parser = TextProcessor(data)
+    parser.preprocess()
+
+    export_folder = get_export_folder()
+    export_handler = ExportManager(export_folder)
+
+    if freq_chart:
+        export_path_freq_chart = export_handler.generate_filename('freqchart.jpg')
+        parser.plot_word_frequency_chart(export=export, output_path=export_path_freq_chart)
+        click.echo("\nFrequency plot of top 20 words generated!")
+
+    if wordcloud:
+        export_path_wordcloud = export_handler.generate_filename('wordcloud.jpg')
+        parser.plot_wordcloud(export=export, output_path=export_path_wordcloud)
+        click.echo("\nWordcloud generated!")
 
 
 @cli.command()
 @mode_option
 @click.option('--n', help='Display n rows of morphological data', type=int)
-@click.option('--export', is_flag=True, default=False, help='Export metrics to file')
+@export_option
 def analyze(mode, n, export):
-    data = load(mode)
+    data = load_data(mode)
+
     # ld = LanguageDetector(data)
     # ld.load_model('model.joblib')
-    result = "English"
+    lang = "English"
 
-    if result == "English":
+    if lang == "English":
         parser = TextProcessor(data)
         parser.preprocess()
+
         parser.generate_metrics()
         parser.generate_morphological_data()
-        parser.generate_sentiment_data()
 
         if n is None:
-            click.echo("Generated metrics is: \n{}\n{}\n{}".format(parser.metrics, parser.morphological_data,
-                                                                   parser.sentiment_data))
+            click.echo("Generated metrics is: \n{}\n{}".format(parser.metrics, parser.morphological_data))
 
             if export:
-                export_folder = ExportManager.get_export_folder()
-                manager = ExportManager(export_folder)
+                export_loc = get_export_folder()
+                manager = ExportManager(export_loc)
 
-                if not os.path.exists(export_folder):
-                    os.makedirs(export_folder)
+                dest1 = manager.export('table.txt', parser.morphological_data)
+                dest2 = manager.export('stats.json', parser.metrics)
+                click.echo(f"\nAnalysis exported to {dest1} and {dest2}")
+            else:
+                rows = parser.morphological_data.split('\n')
+                header = [row.strip() for row in rows[1].split('|') if row.strip()]
+                data_rows = rows[3:]
+                click.echo(
+                    tabulate([row.strip().split('|')[1:] for row in data_rows[:n]], headers=header, tablefmt="pipe"))
 
-                export_path_txt = manager.generate_filename('table.txt')
-                export_path_json = manager.generate_filename('stats.json')
-                export_path_sentiment = manager.generate_filename('sentiment.txt')
-                manager.export(export_path_json, parser.metrics)
-                manager.export(export_path_txt, parser.morphological_data)
-                manager.export(export_path_sentiment, parser.sentiment_data)
-                click.echo(f"\nAnalysis exported to {export_path_txt}, {export_path_json} and {export_path_sentiment}")
+                if export:
+                    raise Exception("Sorry, we don't export limited rows yet.")
         else:
-            rows = parser.morphological_data.split('\n')
-            header = [row.strip() for row in rows[1].split('|') if row.strip()]
-            data_rows = rows[3:]
-            click.echo(tabulate([row.strip().split('|')[1:] for row in data_rows[:n]], headers=header, tablefmt="pipe"))
-
-            if export:
-                raise Exception("Sorry, we don't export limited rows yet.")
-    else:
-        raise Exception("Currently we only support English!")
+            raise Exception("Currently we only support English!")
 
 
 @cli.command()
 @mode_option
-@click.option('--export', is_flag=True, default=False, help='Export summary to file')
+@export_option
+def sentiment_analysis(mode, export):
+    data = load_data(mode)
+
+    # ld = LanguageDetector(data)
+    # ld.load_model('model.joblib')
+
+    lang = "English"
+    parser = TextProcessor(data)
+    parser.generate_sentiment_data()
+
+    click.echo("Sentiment Analysis performed successfully!\n{}: ".format(parser.sentiment_data))
+
+    if export:
+        export_loc = get_export_folder()
+        manager = ExportManager(export_loc)
+        dest = manager.export('sentiment.txt', parser.sentiment_data)
+        click.echo(f"Sentiment Analysis results exported to {dest}")
+
+
+@cli.command()
+@mode_option
+@export_option
 def summarize(mode, export):
-    data = load(mode)
+    data = load_data(mode)
+
+    warnings.filterwarnings("ignore", category=FutureWarning)
 
     obj = CustomSummarizer(data)
-    destination = None
+
+    dest = None
     if export:
-        destination = ExportManager.get_export_folder()
-    summary = obj.summarize(destination)
-    click.echo("Summary: {}".format(summary))
-    if destination is not None:
-        click.echo(f"Summary exported to {destination} \\ {obj.export_path_txt}")
+        dest = get_export_folder()
+
+    summary = obj.summarize(dest)
+    click.echo("\nSummary: {}".format(summary[0]))
+
+    if dest is not None:
+        click.echo(f"Summary exported to {summary[1]}")

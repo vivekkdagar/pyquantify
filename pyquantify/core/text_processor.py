@@ -1,3 +1,4 @@
+import click
 import nltk
 import nltk.tokenize as tokenizer
 from tabulate import tabulate
@@ -5,8 +6,8 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import seaborn as sns
 import spacy
-from pyquantify.misc import expand_pos_tag
-from pyquantify.ml_core.sentiment_analyser import SentimentAnalyzer
+from pyquantify.utils.misc import expand_pos_tag
+from pyquantify.ml_core.sentiment_analyzer import SentimentAnalyzer
 
 
 class TextProcessor:
@@ -76,7 +77,7 @@ class TextProcessor:
         # Save Word Cloud image if requested
         if export and output_path:
             plt.savefig(output_path)
-            print(f"Exported Word Cloud image to: {output_path}")
+            click.echo(f"Exported Word Cloud image to: {output_path}")
 
         plt.show()
 
@@ -93,6 +94,6 @@ class TextProcessor:
         # Save Word Frequency chart if requested
         if export and output_path:
             plt.savefig(output_path)
-            print(f"Exported Word Frequency chart to: {output_path}")
+            click.echo(f"Exported Word Frequency chart to: {output_path}")
 
         plt.show()

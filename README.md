@@ -63,7 +63,7 @@ pip install -r requirements.txt
 You can install the `pyquantify` package directly from PyPI using the following command:
 
 ```bash
-pip install pyquantify
+pip install pyquantifya
 ```
 
 <h3><a id="src"> Build from Source</a></h3>
@@ -72,7 +72,7 @@ pip install pyquantify
 
 ```bash
 git clone <repository_url>
-cd pyquantify
+cd pyquantifya
 ```
 
 2. Build the package:
@@ -90,7 +90,7 @@ pip install dist/*.tar.gz
 4. Run the tool in terminal:
 
 ```bash
-pyquantify
+pyquantifya
 ```
 <h2><a id="use"> :book: Usage Guide</a></h3>
 
@@ -101,7 +101,7 @@ Pyquantify provides several commands for analyzing and visualizing text data. Be
 To generate a word frequency plot for the top 20 words in the text, use the following command:
 
 ```bash
-pyquantify generate-freq_plot --mode [raw/file/website] --export
+pyquantifya generate-freq_plot --mode [raw/file/website] --export
 ```
 
 - `--mode`: Specify the data loading mode (raw input, file, or website).
@@ -113,7 +113,7 @@ pyquantify generate-freq_plot --mode [raw/file/website] --export
 Create and display a word cloud visualization of the processed text data with the following command:
 
 ```bash
-pyquantify generate-wordcloud --mode [raw/file/website] --export
+pyquantifya generate-wordcloud --mode [raw/file/website] --export
 ```
 
 - `--mode`: Specify the data loading mode (raw input, file, or website).
@@ -125,7 +125,7 @@ pyquantify generate-wordcloud --mode [raw/file/website] --export
 To search for a specific word in the detailed table of word morphology, use the following command:
 
 ```bash
-pyquantify search-word --mode [raw/file/website] --word [desired_word]
+pyquantifya search-word --mode [raw/file/website] --word [desired_word]
 ```
 
 - `--mode`: Specify the data loading mode (raw input, file, or website).
@@ -137,7 +137,7 @@ pyquantify search-word --mode [raw/file/website] --word [desired_word]
 Analyze the text and generate key metrics, including morphology analysis, with the following command:
 
 ```bash
-pyquantify analyze --mode [raw/file/website] --n [number_of_rows] --export
+pyquantifya analyze --mode [raw/file/website] --n [number_of_rows] --export
 ```
 
 - `--mode`: Specify the data loading mode (raw input, file, or website).
@@ -150,7 +150,7 @@ pyquantify analyze --mode [raw/file/website] --n [number_of_rows] --export
 Summarize the text using a BERT Extractive Summarizer with the following command:
 
 ```bash
-pyquantify summarize --mode [raw/file/website] --export
+pyquantifya summarize --mode [raw/file/website] --export
 ```
 
 - `--mode`: Specify the data loading mode (raw input, file, or website).
@@ -161,13 +161,13 @@ pyquantify summarize --mode [raw/file/website] --export
 
 - View the Pyquantify GitHub page:
 ```bash
-pyquantify --git [any command with its parameters]
+pyquantifya --git [any command with its parameters]
 ```
 
 Feel free to explore additional options and functionalities by checking the help documentation for each command:
 
 ```bash
-pyquantify [command] --help
+pyquantifya [command] --help
 ```
 </div>
 

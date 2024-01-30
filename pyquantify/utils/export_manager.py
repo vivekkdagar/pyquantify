@@ -1,13 +1,33 @@
 import json
 import os
 
+__all__ = ['get_export_folder', 'ExportManager',]
+
+
+def get_export_folder():
+    if os.name == 'posix':  # Linux
+        return os.path.expanduser("~/Documents/pyquantify")
+    elif os.name == 'nt':  # Windows
+        return os.path.expanduser("~\\Documents\\pyquzantify")
+    else:
+        raise Exception("Unsupported operating system")
+
 
 class ExportManager:
-    def __init__(self, location):
-        self.location = location
+    def __init__(self, loc):
+        self.location = loc
+
+    def create_dir(self):
+        expanded_path = os.path.expanduser(self.location)
+
+        if not os.path.exists(expanded_path):
+            os.makedirs(expanded_path)
+            print(f"Directory '{expanded_path}' created successfully.")
 
     def export(self, filename, data):
         dest_name = self.generate_filename(filename)
+
+        self.create_dir()
 
         if filename.endswith(".json"):
             with open(dest_name, 'w') as export_json:
@@ -28,12 +48,3 @@ class ExportManager:
             counter += 1
 
         return os.path.join(self.location, unique_filename)
-
-    @staticmethod
-    def get_export_folder():
-        if os.name == 'posix':  # Linux
-            return os.path.expanduser("~/Documents/pyquantify")
-        elif os.name == 'nt':  # Windows
-            return os.path.expanduser("~\\Documents\\pyquzantify")
-        else:
-            raise Exception("Unsupported operating system")
