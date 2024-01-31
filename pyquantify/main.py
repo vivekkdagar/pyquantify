@@ -6,6 +6,7 @@ from .utils.input_handler import load_data
 from .ml_core.bert_summarizer import CustomSummarizer
 from .utils.export_manager import *
 from .core.text_processor import TextProcessor
+from lingua import Language, LanguageDetectorBuilder
 
 mode_option = click.option("--mode", type=click.Choice(["raw", "file", "website"]), required=True,
                            help="Data loading mode (raw, file, website)")
@@ -85,12 +86,10 @@ def visualize(mode, export, freq_chart, wordcloud):
 @export_option
 def analyze(mode, n, export):
     data = load_data(mode)
+    detector = LanguageDetectorBuilder.from_all_languages().build()
 
-    # ld = LanguageDetector(data)
-    # ld.load_model('model.joblib')
-    lang = "English"
-
-    if lang == "English":
+    lang = detector.detect_language_of(data)
+    if lang == Language.ENGLISH:
         parser = TextProcessor(data)
         parser.preprocess()
 
@@ -126,20 +125,20 @@ def analyze(mode, n, export):
 def sentiment_analysis(mode, export):
     data = load_data(mode)
 
-    # ld = LanguageDetector(data)
-    # ld.load_model('model.joblib')
+    detector = LanguageDetectorBuilder.from_all_languages().build()
+    lang = detector.detect_language_of(data)
 
-    lang = "English"
-    parser = TextProcessor(data)
-    parser.generate_sentiment_data()
+    if lang == Language.ENGLISH:
+        parser = TextProcessor(data)
+        parser.generate_sentiment_data()
 
-    click.echo("Sentiment Analysis performed successfully!\n{}: ".format(parser.sentiment_data))
+        click.echo("Sentiment Analysis performed successfully!\n{}: ".format(parser.sentiment_data))
 
-    if export:
-        export_loc = get_export_folder()
-        manager = ExportManager(export_loc)
-        dest = manager.export('sentiment.txt', parser.sentiment_data)
-        click.echo(f"Sentiment Analysis results exported to {dest}")
+        if export:
+            export_loc = get_export_folder()
+            manager = ExportManager(export_loc)
+            dest = manager.export('sentiment.txt', parser.sentiment_data)
+            click.echo(f"Sentiment Analysis results exported to {dest}")
 
 
 @cli.command()
