@@ -21,7 +21,7 @@
 
 
 <h2><a id="srn"> :camera:</a> Demo screenshot</h2>
-<div align="center"> <a href=""><img src="https://github.com/vivekkdagar/pyquantify/blob/main/assets/demo.png" alt='image' width='800'/></a> </div>
+<div align="center"> <a href=""><img src="https://github.com/vivekkdagar/pyquantify/blob/main/sample-output/demo.png" alt='image' width='800'/></a> </div>
 
 
 <h2><a id="feat">:dart:</a> Features</h2>
@@ -34,13 +34,17 @@
 
 4. **Export Functionality**: Optionally export generated metrics, frequency tables, and visualizations to files.
 
-5. **Word Cloud Visualization**: Create and display a word cloud visualization of processed text data.
+5. **Visualization**:
+    - Generate and visualize the frequency of the top 20 words in the text.
+    - Create and display a word cloud visualization of processed text data.
 
-6. **Word Frequency Chart**: Generate and visualize the frequency of the top 20 words in the text.
+6. **Interactive Commands**: Utilize command-line interface commands for actions like displaying metrics, limiting results, searching for specific words, and generating visualizations.
 
-7. **Interactive Commands**: Utilize command-line interface commands for actions like displaying metrics, limiting results, searching for specific words, and generating visualizations.
+7. **Summarize Text**: Summarize text using a BERT Extractive Summarizer.
 
-8. **Summarize Text**: Summarize text using a BERT Extractive Summarizer.
+8. **Sentiment Analysis**:
+    - Perform sentiment analysis on the text.
+    - Provides insights into sentiment polarity and subjectivity.
 
 
 <h2><a id="strt"> :toolbox:</a> Getting Started</h2>
@@ -93,8 +97,6 @@ pyquantify
 
 Pyquantify provides several commands for analyzing and visualizing text data. Below is a guide on how to use the key functionalities:
 
-Certainly! Below are the corrected usage commands based on the provided code:
-
 1. **Search for a Specific Word in Morphological Analysis:**
 
    ```bash
@@ -142,12 +144,21 @@ Certainly! Below are the corrected usage commands based on the provided code:
 
    - `--mode`: Specify the data loading mode (raw input, file, or website).
    - `--export`: Optional flag to export the summary to a file.
+
+6. **Sentiment Analysis**
+
+   ```bash
+   pyquantify sentiment-analysis --mode [raw/file/website] --export
+   ```
+
+   - `--mode`: Specify the data loading mode (raw input, file, or website).
+   - `--export`: Optional flag to export the summary to a file.
    
 ### Additional Commands
 
 - View the Pyquantify GitHub page:
 ```bash
-pyquantify --git [any command with its parameters]
+pyquantify --git
 ```
 
 Feel free to explore additional options and functionalities by checking the help documentation for each command:
@@ -182,4 +193,5 @@ NLPFreq felt limiting and didn't capture the full scope of the project. Pyquanti
 - [NeuralNine's Publish Your Own Python Package](https://www.youtube.com/watch?v=tEFkHEKypLI)
 
 <hr/>
+
 **Note:** Pyquantify has undergone thorough testing on Linux, and its functionality is confirmed to work seamlessly. However, it's important to note that when running on Windows Subsystem for Linux (WSL), certain features may have limited functionality due to the absence of the complete Linux toolset in the WSL environment.
