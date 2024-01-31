@@ -106,17 +106,17 @@ def analyze(mode, n, export):
                 dest1 = manager.export('table.txt', parser.morphological_data)
                 dest2 = manager.export('stats.json', parser.metrics)
                 click.echo(f"\nAnalysis exported to {dest1} and {dest2}")
-            else:
-                rows = parser.morphological_data.split('\n')
-                header = [row.strip() for row in rows[1].split('|') if row.strip()]
-                data_rows = rows[3:]
-                click.echo(
-                    tabulate([row.strip().split('|')[1:] for row in data_rows[:n]], headers=header, tablefmt="pipe"))
-
-                if export:
-                    raise Exception("Sorry, we don't export limited rows yet.")
         else:
-            raise Exception("Currently we only support English!")
+            rows = parser.morphological_data.split('\n')
+            header = [row.strip() for row in rows[1].split('|') if row.strip()]
+            data_rows = rows[3:]
+            click.echo(
+                tabulate([row.strip().split('|')[1:] for row in data_rows[:n]], headers=header, tablefmt="pipe"))
+
+            if export:
+                raise Exception("Sorry, we don't export limited rows yet.")
+    else:
+        raise Exception(f"Currently we only support English! Your data had {lang} language")
 
 
 @cli.command()

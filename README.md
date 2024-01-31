@@ -15,7 +15,6 @@
 - [:toolbox: Getting Started](#strt)
 - [:toolbox: Installation](#insta)
 - [:book: Usage Guide](#use)
-- [:compass: Roadmap](#map)
 - [:grey_question: FAQ](#ques)
 - [:gem: Acknowledgements](#ack)
 
@@ -29,21 +28,19 @@
 
 1. **Data Loading**: Load text data from raw input, files, or websites with interactive prompts for user input.
 
-2. **Text Preprocessing**: Tokenize and clean the text data by removing punctuation and converting words to lowercase.
+2. **Metrics Generation**: Calculate and display key metrics, including character count (with and without spaces), sentence count, word count, and paragraph count.
 
-3. **Metrics Generation**: Calculate and display key metrics, including character count (with and without spaces), sentence count, word count, and paragraph count.
+3. **Morphological Analysis**: Generate a detailed table of word morphology, including word rank, original form, lemmatized form, part-of-speech (POS) tag, percentage occurrence, and count.
 
-4. **Morphological Analysis**: Generate a detailed table of word morphology, including word rank, original form, lemmatized form, part-of-speech (POS) tag, percentage occurrence, and count.
+4. **Export Functionality**: Optionally export generated metrics, frequency tables, and visualizations to files.
 
-5. **Export Functionality**: Optionally export generated metrics, frequency tables, and visualizations to files.
+5. **Word Cloud Visualization**: Create and display a word cloud visualization of processed text data.
 
-6. **Word Cloud Visualization**: Create and display a word cloud visualization of processed text data.
+6. **Word Frequency Chart**: Generate and visualize the frequency of the top 20 words in the text.
 
-7. **Word Frequency Chart**: Generate and visualize the frequency of the top 20 words in the text.
+7. **Interactive Commands**: Utilize command-line interface commands for actions like displaying metrics, limiting results, searching for specific words, and generating visualizations.
 
-8. **Interactive Commands**: Utilize command-line interface commands for actions like displaying metrics, limiting results, searching for specific words, and generating visualizations.
-
-9. **Summarize Text**: Summarize text using a BERT Extractive Summarizer.
+8. **Summarize Text**: Summarize text using a BERT Extractive Summarizer.
 
 
 <h2><a id="strt"> :toolbox:</a> Getting Started</h2>
@@ -63,7 +60,7 @@ pip install -r requirements.txt
 You can install the `pyquantify` package directly from PyPI using the following command:
 
 ```bash
-pip install pyquantifya
+pip install pyquantify
 ```
 
 <h3><a id="src"> Build from Source</a></h3>
@@ -72,113 +69,93 @@ pip install pyquantifya
 
 ```bash
 git clone <repository_url>
-cd pyquantifya
+cd pyquantify
 ```
 
 2. Build the package:
 
 ```bash
-python3 setup.py sdist bdist_wheel
+python3 -m build
 ```
 
 3. Install the package:
 
 ```bash
-pip install dist/*.tar.gz
+pip install dist/*gz
 ```
 
 4. Run the tool in terminal:
 
 ```bash
-pyquantifya
+pyquantify
 ```
 <h2><a id="use"> :book: Usage Guide</a></h3>
 
 Pyquantify provides several commands for analyzing and visualizing text data. Below is a guide on how to use the key functionalities:
 
-### 1. Generate Word Frequency Plot
+Certainly! Below are the corrected usage commands based on the provided code:
 
-To generate a word frequency plot for the top 20 words in the text, use the following command:
+1. **Search for a Specific Word in Morphological Analysis:**
 
-```bash
-pyquantifya generate-freq_plot --mode [raw/file/website] --export
-```
+   ```bash
+   pyquantify search-word --mode [raw/file/website] --word [desired_word]
+   ```
 
-- `--mode`: Specify the data loading mode (raw input, file, or website).
-- `--export`: Optional flag to export the frequency plot to a file.
-<br>
+   - `--mode`: Specify the data loading mode (raw input, file, or website).
+   - `--word`: Specify the word you want to search for.
 
-### 2. Generate Word Cloud
+2. **Generate Word Frequency Plot:**
 
-Create and display a word cloud visualization of the processed text data with the following command:
+   ```bash
+   pyquantify visualize --mode [raw/file/website] --freq-chart --export
+   ```
 
-```bash
-pyquantifya generate-wordcloud --mode [raw/file/website] --export
-```
+   - `--mode`: Specify the data loading mode (raw input, file, or website).
+   - `--freq-chart`: Flag to generate word frequency chart.
+   - `--export`: Optional flag to export the frequency plot to a file.
 
-- `--mode`: Specify the data loading mode (raw input, file, or website).
-- `--export`: Optional flag to export the word cloud to a file.
-<br>
+3. **Generate Word Cloud:**
 
-### 3. Search for a Specific Word in Morphological Analysis
+   ```bash
+   pyquantify visualize --mode [raw/file/website] --wordcloud --export
+   ```
 
-To search for a specific word in the detailed table of word morphology, use the following command:
+   - `--mode`: Specify the data loading mode (raw input, file, or website).
+   - `--wordcloud`: Flag to generate word cloud.
+   - `--export`: Optional flag to export the word cloud to a file.
 
-```bash
-pyquantifya search-word --mode [raw/file/website] --word [desired_word]
-```
+4. **Text Analysis and Metrics Generation:**
 
-- `--mode`: Specify the data loading mode (raw input, file, or website).
-- `--word`: Specify the word you want to search for.
-<br>
+   ```bash
+   pyquantify analyze --mode [raw/file/website] --n [number_of_rows] --export
+   ```
 
-### 4. Text Analysis and Metrics Generation
+   - `--mode`: Specify the data loading mode (raw input, file, or website).
+   - `--n`: Optional parameter to display a specific number of rows in the analysis.
+   - `--export`: Optional flag to export the analysis results to files.
 
-Analyze the text and generate key metrics, including morphology analysis, with the following command:
+5. **Summarize Text:**
 
-```bash
-pyquantifya analyze --mode [raw/file/website] --n [number_of_rows] --export
-```
+   ```bash
+   pyquantify summarize --mode [raw/file/website] --export
+   ```
 
-- `--mode`: Specify the data loading mode (raw input, file, or website).
-- `--n`: Optional parameter to display a specific number of rows in the analysis.
-- `--export`: Optional flag to export the analysis results to files.
-<br>
-
-### 5. Summarize Text
-
-Summarize the text using a BERT Extractive Summarizer with the following command:
-
-```bash
-pyquantifya summarize --mode [raw/file/website] --export
-```
-
-- `--mode`: Specify the data loading mode (raw input, file, or website).
-- `--export`: Optional flag to export the summary to a file.
-<br>
-
+   - `--mode`: Specify the data loading mode (raw input, file, or website).
+   - `--export`: Optional flag to export the summary to a file.
+   
 ### Additional Commands
 
 - View the Pyquantify GitHub page:
 ```bash
-pyquantifya --git [any command with its parameters]
+pyquantify --git [any command with its parameters]
 ```
 
 Feel free to explore additional options and functionalities by checking the help documentation for each command:
 
 ```bash
-pyquantifya [command] --help
+pyquantify [command] --help
 ```
 </div>
-
-<h2><a id="map"> :compass: Roadmap</a></h2>
-
-* [ ] Minimize training time for the multinomial NB model on subsequent project uses by leveraging pre-trained models.
-* [ ] Diversifying export options to include formats such as CSV and xlsx.
-* [ ] Investigate whether pre-trained conversational AI models can be leveraged to provide interactive access to the text's insights.
-* [ ] Implement persistent data storage to eliminate repetitive data input and streamline user workflow.
-* [ ] Ensure compatability with Windows operating system.
-
 
 
 <h2><a id="ques">:grey_question: FAQ</a></h2>
