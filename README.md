@@ -1,5 +1,7 @@
 <div align='center'>
 
+> Todo: Add information about enabling long path support on Windows and setting the PATH variable.
+
 <h1>pyquantify</h1>
 <p>Pyquantify is a powerful CLI tool for semantic analysis. It leverages natural language processing to unveil insights from text, files, or websites, empowering sophisticated data visualization and exploration.</p>
 
