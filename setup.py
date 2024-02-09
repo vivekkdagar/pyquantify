@@ -20,6 +20,8 @@ setup(
         'wordcloud~=1.9.2',
         'textblob~=0.15.3',
         'setuptools~=68.0.0',
+        'lingua',
+        'torch',
     ],
     entry_points={
         'console_scripts': [
