@@ -13,5 +13,6 @@ wordcloud~=1.9.2
 textblob~=0.15.3
 click~=8.1.7
 setuptools~=68.0.0
-lingua
+wheel
+langid
 

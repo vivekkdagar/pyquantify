@@ -22,6 +22,7 @@ setup(
         'setuptools~=68.0.0',
         'langid',
         'torch'
+        'wheel',
     ],
     entry_points={
         'console_scripts': [
@@ -32,7 +33,8 @@ setup(
     author_email='vivekdagar2017@gmail.com',
     description='Advanced Feature-Rich CLI-based Tool for Semantic Analysis',
     url='https://github.com/vivekkdagar/pyquantify/',
-    long_description="""Please refer to the Github for usage guide and more {https://github.com/vivekkdagar/pyquantify}""",
+    long_description="""Please refer to the Github for usage guide and more {
+    https://github.com/vivekkdagar/pyquantify}""",
     long_description_content_type='text/markdown',
     license='GNU General Public License v3.0',
 )

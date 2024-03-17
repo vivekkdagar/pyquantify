@@ -7,7 +7,6 @@ from .ml_core.bert_summarizer import CustomSummarizer
 from .utils.export_manager import *
 from .core.text_processor import TextProcessor
 from langid import classify
-from lingua import Language, LanguageDetectorBuilder
 
 mode_option = click.option("--mode", type=click.Choice(["raw", "file", "website"]), required=True,
                            help="Data loading mode (raw, file, website)")
@@ -87,7 +86,6 @@ def visualize(mode, export, freq_chart, wordcloud):
 @export_option
 def analyze(mode, n, export):
     data = load_data(mode)
-    # detector = LanguageDetectorBuilder.from_all_languages().build()
 
     lang = classify(data)
     if lang[0] == 'en':
