@@ -6,6 +6,7 @@ from .utils.input_handler import load_data
 from .ml_core.bert_summarizer import CustomSummarizer
 from .utils.export_manager import *
 from .core.text_processor import TextProcessor
+from langid import classify
 from lingua import Language, LanguageDetectorBuilder
 
 mode_option = click.option("--mode", type=click.Choice(["raw", "file", "website"]), required=True,
@@ -86,10 +87,10 @@ def visualize(mode, export, freq_chart, wordcloud):
 @export_option
 def analyze(mode, n, export):
     data = load_data(mode)
-    detector = LanguageDetectorBuilder.from_all_languages().build()
+    # detector = LanguageDetectorBuilder.from_all_languages().build()
 
-    lang = detector.detect_language_of(data)
-    if lang == Language.ENGLISH:
+    lang = classify(data)
+    if lang[0] == 'en':
         parser = TextProcessor(data)
         parser.preprocess()
 
@@ -125,10 +126,9 @@ def analyze(mode, n, export):
 def sentiment_analysis(mode, export):
     data = load_data(mode)
 
-    detector = LanguageDetectorBuilder.from_all_languages().build()
-    lang = detector.detect_language_of(data)
+    lang = classify(data)
 
-    if lang == Language.ENGLISH:
+    if lang[0] == "en":
         parser = TextProcessor(data)
         parser.generate_sentiment_data()
 
