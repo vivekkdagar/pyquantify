@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pyquantify',
-    version='1.1.1',
+    version='1.1.2',
     packages=find_packages(),
     install_requires=[
         'click~=8.1.7',
