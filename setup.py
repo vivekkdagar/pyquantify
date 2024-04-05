@@ -19,10 +19,6 @@ setup(
         'spacy~=3.7.2',
         'wordcloud~=1.9.2',
         'textblob~=0.15.3',
-        'setuptools~=68.0.0',
-        'langid',
-        'torch'
-        'wheel',
     ],
     entry_points={
         'console_scripts': [

@@ -6,8 +6,8 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import seaborn as sns
 import spacy
-from pyquantify.utils.misc import expand_pos_tag
-from pyquantify.ml_core.sentiment_analyzer import SentimentAnalyzer
+from .utils.misc import expand_pos_tag
+from .sentiment_analyzer import SentimentAnalyzer
 
 
 class TextProcessor:

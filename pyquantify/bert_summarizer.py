@@ -1,5 +1,5 @@
 from summarizer import Summarizer
-from pyquantify.utils.export_manager import ExportManager
+from .utils.export_manager import ExportManager
 
 
 class CustomSummarizer:

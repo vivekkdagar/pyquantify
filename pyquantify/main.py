@@ -3,9 +3,9 @@ import webbrowser
 from tabulate import tabulate
 import click
 from .utils.input_handler import load_data
-from .ml_core.bert_summarizer import CustomSummarizer
+from .bert_summarizer import CustomSummarizer
 from .utils.export_manager import *
-from .core.text_processor import TextProcessor
+from .text_processor import TextProcessor
 from langid import classify
 
 mode_option = click.option("--mode", type=click.Choice(["raw", "file", "website"]), required=True,
