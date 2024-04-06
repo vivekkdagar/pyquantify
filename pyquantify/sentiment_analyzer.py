@@ -1,5 +1,8 @@
+import multiprocessing
+
 from textblob import TextBlob
 from tabulate import tabulate
+from concurrent.futures import ProcessPoolExecutor
 
 
 def get_sentiment_label(polarity):
@@ -7,29 +10,39 @@ def get_sentiment_label(polarity):
         return "Positive"
     elif polarity < 0:
         return "Negative"
+    return "Neutral"
+
+
+def _analyze_sentence(sentence):
+    blob = TextBlob(sentence)
+    sentiment = get_sentiment_label(blob.sentiment.polarity)
+    subjectivity = blob.sentiment.subjectivity
+
+    # Display only the first 5 words of sentences that are more than 7 words long
+    if len(sentence.split()) > 7:
+        shortened_sentence = ' '.join(sentence.split()[:5]) + '...'
     else:
-        return "Neutral"
+        shortened_sentence = sentence
+
+    return [shortened_sentence, sentiment, subjectivity]
 
 
 class SentimentAnalyzer:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, data: list):
+        self.data: list = data
 
     def get_sentiment_table(self):
-        scores = []
+        # Split data into chunks for parallel processing
+        num_chunks = min(len(self.data), multiprocessing.cpu_count())  # Adjust number of chunks based on available CPU cores
+        chunk_size = len(self.data) // num_chunks
+        data_chunks = [self.data[i:i + chunk_size] for i in range(0, len(self.data), chunk_size)]
 
-        for sentence in self.data:
-            blob = TextBlob(sentence)
-            sentiment = get_sentiment_label(blob.sentiment.polarity)
-            subjectivity = blob.sentiment.subjectivity
+        # Flatten the list of chunks
+        flattened_chunks = [item for sublist in data_chunks for item in sublist]
 
-            # Display only the first 5 words of sentences that are more than 7 words long
-            if len(sentence.split()) > 7:
-                shortened_sentence = ' '.join(sentence.split()[:5]) + '...'
-            else:
-                shortened_sentence = sentence
-
-            scores.append([shortened_sentence, sentiment, subjectivity])
+        # Use ProcessPoolExecutor for asynchronous processing
+        with ProcessPoolExecutor() as executor:
+            scores = list(executor.map(_analyze_sentence, flattened_chunks))
 
         return scores
 
