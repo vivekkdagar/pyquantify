@@ -1,0 +1,29 @@
++------+---------------+-----------------+--------------------------+--------------+-------+
+| Rank |     Word      | Lemmatized Form |         POS Tag          | % Occurrence | Count |
++------+---------------+-----------------+--------------------------+--------------+-------+
+|  1   |    Natural    |     Natural     |       proper noun        |     4.0      |   1   |
+|  2   |   Language    |    Language     |       proper noun        |     4.0      |   1   |
+|  3   |  Processing   |   Processing    |       proper noun        |     4.0      |   1   |
+|  4   |      NLP      |       NLP       |       proper noun        |     4.0      |   1   |
+|  5   |      is       |       be        |      auxiliary verb      |     4.0      |   1   |
+|  6   |       a       |        a        |        determiner        |     4.0      |   1   |
+|  7   |     field     |      field      |           noun           |     4.0      |   1   |
+|  8   |     that      |      that       |         pronoun          |     4.0      |   1   |
+|  9   |     deals     |      deal       |           verb           |     4.0      |   1   |
+|  10  |     with      |      with       |        adposition        |     4.0      |   1   |
+|  11  | understanding |  understanding  |           noun           |     4.0      |   1   |
+|  12  |      and      |       and       | coordinating conjunction |     8.0      |   2   |
+|  13  |  processing   |     process     |           verb           |     4.0      |   1   |
+|  14  |     human     |      human      |        adjective         |     4.0      |   1   |
+|  15  |   language    |    language     |           noun           |     4.0      |   1   |
+|  16  |      It       |       it        |         pronoun          |     4.0      |   1   |
+|  17  |   involves    |     involve     |           verb           |     4.0      |   1   |
+|  18  |   analyzing   |     analyze     |           verb           |     4.0      |   1   |
+|  19  |     text      |      text       |           noun           |     4.0      |   1   |
+|  20  |     data      |      datum      |           noun           |     4.0      |   1   |
+|  21  |      to       |       to        |         particle         |     4.0      |   1   |
+|  22  |    extract    |     extract     |           verb           |     4.0      |   1   |
+|  23  |    meaning    |     meaning     |           noun           |     4.0      |   1   |
+|  24  |      and      |       and       | coordinating conjunction |     8.0      |   2   |
+|  25  |   insights    |     insight     |           noun           |     4.0      |   1   |
++------+---------------+-----------------+--------------------------+--------------+-------+
