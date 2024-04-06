@@ -86,20 +86,3 @@ class CustomSummarizer:
         Closes the database connection when the instance is deleted.
         """
         self.conn.close()
-
-
-# Example usage:
-if __name__ == "__main__":
-    text = ("Natural Language Processing (NLP) is a branch of artificial intelligence that focuses on the interaction "
-            "between computers and human languages. It encompasses a wide range of tasks, including text "
-            "understanding, machine translation, sentiment analysis, and language generation. NLP techniques enable "
-            "computers to comprehend, interpret, and generate human language in a meaningful way, facilitating "
-            "communication and interaction between humans and machines. Through the use of statistical models, "
-            "machine learning algorithms, and linguistic rules, NLP systems can extract insights from large volumes "
-            "of text data, automate tasks such as document classification and information retrieval, and even assist "
-            "in language learning and translation. As NLP continues to advance, it plays an increasingly vital role "
-            "in various domains, including healthcare, finance, customer service, and education, revolutionizing the "
-            "way we interact with technology and access information.")
-    summarizer = CustomSummarizer(text)
-    summary, _ = summarizer.summarize()
-    print(summary)
