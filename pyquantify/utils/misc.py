@@ -1,28 +1,24 @@
 def expand_pos_tag(pos_tag):
-    pos_prefix = pos_tag[:2]
-
-    pos_mapping = {
-        'CC': 'Coordinating conjunction',
-        'CD': 'Cardinal number',
-        'DT': 'Determiner',
-        'FW': 'Foreign word',
-        'IN': 'Preposition or subordinating conjunction',
-        'JJ': 'Adjective',
-        'LS': 'List item marker',
-        'MD': 'Modal',
-        'NN': 'Noun',
-        'PD': 'Predeterminer',
-        'PR': 'Pronoun',
-        'RB': 'Adverb',
-        'RP': 'Particle',
-        'SY': 'Symbol',
-        'TO': 'to',
-        'UH': 'Interjection',
-        'VB': 'Verb',
-        'WD': 'Wh-determiner',
-        'WP': 'Wh-pronoun',
-        'WR': 'Wh-adverb',
-        'Unknown': 'Unknown POS Tag',
+    pos_tag_mapping = {
+        "ADJ": "adjective",
+        "ADP": "adposition",
+        "ADV": "adverb",
+        "AUX": "auxiliary verb",
+        "CONJ": "conjunction",
+        "CCONJ": "coordinating conjunction",
+        "DET": "determiner",
+        "INTJ": "interjection",
+        "NOUN": "noun",
+        "NUM": "numeral",
+        "PART": "particle",
+        "PRON": "pronoun",
+        "PROPN": "proper noun",
+        "PUNCT": "punctuation",
+        "SCONJ": "subordinating conjunction",
+        "SYM": "symbol",
+        "VERB": "verb",
+        "X": "other",
+        "SPACE": "space"
     }
 
-    return pos_mapping.get(pos_prefix, pos_mapping['Unknown'])
+    return pos_tag_mapping.get(pos_tag, "unknown")

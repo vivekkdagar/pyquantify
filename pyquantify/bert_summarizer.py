@@ -1,39 +1,95 @@
+import sqlite3
 from summarizer import Summarizer
-#from .utils.export_manager import ExportManager
-import torch
+from .utils.export_manager import ExportManager
+import warnings
+import os
+from tqdm import tqdm
+import time
+
+warnings.filterwarnings("ignore")
+
+
+def get_cache_folder():
+    """
+    Returns the path to the cache folder based on the operating system.
+
+    Returns:
+        str: Path to the cache folder.
+
+    Raises:
+        Exception: If the operating system is not supported.
+    """
+    if os.name == 'posix':  # Linux
+        return os.path.expanduser("~/Documents/ppyquantify/cache")
+    elif os.name == 'nt':  # Windows
+        return os.path.expanduser("~\\Documents\\ppyquantify\\cache")
+    raise Exception("Unsupported operating system\n")
 
 
 class CustomSummarizer:
-    def __init__(self, text):
-        self.export_path_txt = None
-        self.text = text
-        # Load the summarizer model once during initialization
-        self.parser = Summarizer()
-        # Use GPU if available
-        self.parser.device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        # Initialize a dictionary to cache summarization results
-        self.summary_cache = {}
+    """
+    A custom summarizer class that utilizes a cache for faster summarization.
+    """
+    def __init__(self, data):
+        """
+        Initializes the CustomSummarizer.
+
+        Args:
+            data (str): The text to be summarized.
+        """
+        self.text = data
+        self.db_filename = os.path.join(get_cache_folder(), 'summarization_cache.db')
+        os.makedirs(os.path.dirname(self.db_filename), exist_ok=True)
+        self.conn = sqlite3.connect(self.db_filename)
+        self.create_table()
+
+    def create_table(self):
+        """
+        Creates the summarization cache table if it does not exist.
+        """
+        cursor = self.conn.cursor()
+        cursor.execute('CREATE TABLE IF NOT EXISTS summarization_cache (text TEXT PRIMARY KEY, res TEXT)')
+        self.conn.commit()
 
     def summarize(self, loc=None):
-        # Check if the summary for the current text is already cached
-        if self.text in self.summary_cache:
-            summary = self.summary_cache[self.text]
+        """
+        Summarizes the text and optionally exports the summary to a file.
+
+        Args:
+            loc (str, optional): The location to export the summary.
+
+        Returns:
+            tuple: A tuple containing the summary text and the destination file path if exported.
+        """
+        cursor = self.conn.cursor()
+        cursor.execute('SELECT res FROM summarization_cache WHERE text = ?', (self.text,))
+        cached_summary = cursor.fetchone()
+        if cached_summary:
+            res = cached_summary[0]
         else:
-            # Generate the summary using the summarizer model
-            summary = self.parser(self.text)
-            # Cache the summary for future use
-            self.summary_cache[self.text] = summary
+            summarizer = Summarizer()
+            with tqdm(total=100, desc="Summarizing") as pbar:
+                res = summarizer(self.text)
+                pbar.update(100)
+            cursor.execute('INSERT INTO summarization_cache (text, res) VALUES (?, ?)', (self.text, res))
+            self.conn.commit()
+        time.sleep(0.01)
 
         dest = None
-        #if loc:
-         #   manager = ExportManager(loc)
-          #  dest = manager.export('summary.txt', summary)
-        return [summary, dest]
+        if loc:
+            manager = ExportManager(loc)
+            dest = manager.export('summary.txt', res)
+        return [res, dest]
+
+    def __del__(self):
+        """
+        Closes the database connection when the instance is deleted.
+        """
+        self.conn.close()
 
 
 # Example usage:
 if __name__ == "__main__":
-    # Sample text
     text = ("Natural Language Processing (NLP) is a branch of artificial intelligence that focuses on the interaction "
             "between computers and human languages. It encompasses a wide range of tasks, including text "
             "understanding, machine translation, sentiment analysis, and language generation. NLP techniques enable "
@@ -44,7 +100,6 @@ if __name__ == "__main__":
             "in language learning and translation. As NLP continues to advance, it plays an increasingly vital role "
             "in various domains, including healthcare, finance, customer service, and education, revolutionizing the "
             "way we interact with technology and access information.")
-
     summarizer = CustomSummarizer(text)
     summary, _ = summarizer.summarize()
     print(summary)
