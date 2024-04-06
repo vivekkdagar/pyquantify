@@ -22,7 +22,8 @@ setup(
         'setuptools~=68.0.0',
         'textblob~=0.15.3',
         'langid~=1.1.6',
-        'torch'
+        'torch',
+        'lxml',
     ],
     entry_points={
         'console_scripts': [
