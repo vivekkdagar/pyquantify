@@ -20,9 +20,9 @@ def get_cache_folder():
         Exception: If the operating system is not supported.
     """
     if os.name == 'posix':  # Linux
-        return os.path.expanduser("~/Documents/ppyquantify/cache")
+        return os.path.expanduser("~/Documents/pyquantify/cache")
     elif os.name == 'nt':  # Windows
-        return os.path.expanduser("~\\Documents\\ppyquantify\\cache")
+        return os.path.expanduser("~\\Documents\\pyquantify\\cache")
     raise Exception("Unsupported operating system\n")
 
 
