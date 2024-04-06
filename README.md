@@ -12,6 +12,18 @@ Pyquantify is a powerful CLI tool for semantic analysis. It leverages natural la
 
 [![Python 3](https://img.shields.io/badge/Python-3-brightgreen)](https://www.python.org/)
 
+## Table Of Contents
+   * [Features](#features)
+   * [Installation](#installation)
+         - [Install pyquantify with pip](#install-pyquantify-with-pip)
+         - [or you can build locally](#or-you-can-build-locally)
+   * [Before running pyquantify](#before-running-pyquantify)
+   * [Usage/Examples](#usageexamples)
+   * [FAQ](#faq)
+   * [Screenshots](#screenshots)
+   * [Acknowledgements](#acknowledgements)
+
+
 ## Demo
 
 <img src="https://github.com/vivekkdagar/pyquantify/blob/main/assets/screenshots/menu.png">
@@ -189,8 +201,8 @@ pyquantify git
 pyquantify keywords --mode [raw/file/website] --export
 ```
 
-  1. --mode: Specify the data loading mode (raw input, file, or website).
-  2. --export: Optional flag to export the extracted keywords to a file.
+- `--mode`: Specify the data loading mode (raw input, file, or website).
+- `--export`: Optional flag to export the extracted keywords to a file.
 
 
 9. **Calculate Cosine Similarity:**
@@ -234,8 +246,6 @@ NLPFreq felt limiting and didn't capture the full scope of the project. Pyquanti
 
 ## Acknowledgements
 
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-
 - [NeuralNine's Publish Your Own Python Package](https://www.youtube.com/watch?v=tEFkHEKypLI)
+- [Github Readme Generator](https://readme.so/)
+- [Table of Content Generator](https://derlin.github.io/bitdowntoc/)
