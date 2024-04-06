@@ -1,100 +1,122 @@
-<div align='center'>
+
+# pyquantify
+
+Pyquantify is a powerful CLI tool for semantic analysis. It leverages natural language processing to unveil insights from text, files, or websites, empowering sophisticated data visualization and exploration.
 
 
-<h1>pyquantify</h1>
-<p>Pyquantify is a powerful CLI tool for semantic analysis. It leverages natural language processing to unveil insights from text, files, or websites, empowering sophisticated data visualization and exploration.</p>
+## Badges
 
-<h4> <a href="https://github.com/vivekkdagar/pyquantify/issues"> Report Bug </a> <span> · </span> <a href="https://github.com/vivekkdagar/pyquantify/issues"> Request Feature </a> </h4>
+![Pyquantify Version](https://img.shields.io/badge/PyQuantify-1.2.0-brightgreen)
 
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
-</div>
-  
-# :notebook_with_decorative_cover: Table of Contents
+[![Python 3](https://img.shields.io/badge/Python-3-brightgreen)](https://www.python.org/)
 
-- [:camera: Demo screenshot](#srn)
-- [:dart: Features](#feat)
-- [:toolbox: Getting Started](#strt)
-- [:toolbox: Installation](#insta)
-- [:book: Usage Guide](#use)
-- [:grey_question: FAQ](#ques)
-- [:gem: Acknowledgements](#ack)
+## Demo
+
+<img src="https://github.com/vivekkdagar/pyquantify/blob/main/assets/screenshots/menu.png">
 
 
+## Features
 
-<h2><a id="srn"> :camera:</a> Demo screenshot</h2>
-<div align="center"> <a href=""><img src="https://github.com/vivekkdagar/pyquantify/blob/main/sample-output/demo.png" alt='image' width='800'/></a> </div>
+1. **Text Summarization**:
+   - Utilizes the BERT model for summarizing text.
+   - Provides caching functionality to speed up summarization for previously processed text.
+   - Supports exporting summaries to text files.
 
+2. **Text Analysis**:
+   - Preprocesses text data including tokenization and part-of-speech tagging.
+   - Generates various metrics such as character count, word count, sentence count, etc.
+   - Analyzes morphological data including lemmatized forms, part-of-speech tags, and word frequencies.
+   - Performs sentiment analysis using the TextBlob library.
+   - Visualizes data through word clouds and word frequency charts.
 
-<h2><a id="feat">:dart:</a> Features</h2>
+3. **Text Processing**:
+   - Offers functionality for cleaning and preprocessing text data.
+   - Implements functions for generating word clouds and word frequency charts.
+   - Calculates cosine similarity between two texts.
 
-1. **Data Loading**: Load text data from raw input, files, or websites with interactive prompts for user input.
+4. **Data Loading and Exporting**:
+   - Supports loading text data from raw input, files, or websites.
+   - Provides export functionality for analyzed data, summaries, sentiment analysis results, and keywords extracted from text.
 
-2. **Metrics Generation**: Calculate and display key metrics, including character count (with and without spaces), sentence count, word count, and paragraph count.
+5. **CLI Interface**:
+   - Implements a command-line interface (CLI) using Click library.
+   - Offers commands for various text analysis and summarization tasks, including data visualization and sentiment analysis.
+   - Provides options for specifying data loading mode and exporting analysis results.
 
-3. **Morphological Analysis**: Generate a detailed table of word morphology, including word rank, original form, lemmatized form, part-of-speech (POS) tag, percentage occurrence, and count.
+6. **Parallel Processing**: Utilizes multiprocessing and concurrent.futures for parallel processing of tasks, improving performance for tasks like sentiment analysis and summarization.
 
-4. **Export Functionality**: Optionally export generated metrics, frequency tables, and visualizations to files.
+7. **Unit Testing**:
+   - Includes unit tests for different modules and functionalities using the `unittest` framework.
+   - Uses mocking to isolate and test individual components such as data loading, summarization, and exporting.
 
-5. **Visualization**:
-    - Generate and visualize the frequency of the top 20 words in the text.
-    - Create and display a word cloud visualization of processed text data.
+8. **Exception Handling and Error Reporting**:
+   - Handles exceptions gracefully and provides informative error messages.
+   - Reports errors such as unsupported operating systems, file not found, and invalid input modes.
+## Installation
 
-6. **Interactive Commands**: Utilize command-line interface commands for actions like displaying metrics, limiting results, searching for specific words, and generating visualizations.
-
-7. **Summarize Text**: Summarize text using a BERT Extractive Summarizer.
-
-8. **Sentiment Analysis**:
-    - Perform sentiment analysis on the text.
-    - Provides insights into sentiment polarity and subjectivity.
-
-
-<h2><a id="strt"> :toolbox:</a> Getting Started</h2>
-
-### :bangbang: Prerequisites
-
-Ensure you meet the following requirements before installation (if you're building from source):
-
-```bash
-pip install -r requirements.txt
-```
-
-<h2><a id="insta"> :toolbox:</a> Installation</h2>
-
-<h3><a id="pypi"> Install from PyPI</a></h3>
-
-You can install the `pyquantify` package directly from PyPI using the following command:
+#### Install pyquantify with pip
 
 ```bash
-pip install pyquantify
+  pip install pyquantify
 ```
+    
+#### or you can build locally
 
-<h3><a id="src"> Build from Source</a></h3>
-
-1. Clone the project:
+Clone the project
 
 ```bash
-git clone <repository_url>
-cd pyquantify
+  git clone https://github.com/vivekkdagar/pyquantify.git
 ```
 
-2. Build the package:
+Go to the project directory
 
 ```bash
-python3 -m build
+  cd pyquantify
 ```
 
-3. Install the package:
+Build the package:
 
 ```bash
-pip install dist/*gz
+  python3 -m build
 ```
 
-4. Run the tool in terminal:
+Install the package:
 
 ```bash
-pyquantify
+  pip install dist/*gz
 ```
-<h2><a id="use"> :book: Usage Guide</a></h3>
+
+
+## Before running pyquantify
+
+Clone the project
+
+```bash
+  git clone https://github.com/vivekkdagar/pyquantify.git
+```
+
+Go to the project directory
+
+```bash
+  cd pyquantify
+```
+
+Run the script nltk_datasets.py in scripts directory
+
+```bash
+  python3 nltk_datasets.py
+```
+
+Download dataset for spacy
+
+```bash
+  python3 -m spacy download en_core_web_sm
+```
+
+
+## Usage/Examples
 
 Pyquantify provides several commands for analyzing and visualizing text data. Below is a guide on how to use the key functionalities:
 
@@ -154,23 +176,41 @@ Pyquantify provides several commands for analyzing and visualizing text data. Be
 
    - `--mode`: Specify the data loading mode (raw input, file, or website).
    - `--export`: Optional flag to export the summary to a file.
-   
-### Additional Commands
 
-- View the Pyquantify GitHub page:
+7. **View the pyquantify git page**
+
 ```bash
-pyquantify --git
+pyquantify git
 ```
+
+8. **Extract keywords from the data**
+
+```bash
+pyquantify keywords --mode [raw/file/website] --export
+```
+
+  1. --mode: Specify the data loading mode (raw input, file, or website).
+  2. --export: Optional flag to export the extracted keywords to a file.
+
+
+9. **Calculate Cosine Similarity:**
+
+   ```bash
+   pyquantify similarity --mode [raw/file/website] --other [raw/file/website]
+   ```
+
+   - `--mode`: Specify the data loading mode for the first text (raw input, file, or website).
+   - `--other`: Specify the data loading mode for the second text (raw input, file, or website).
 
 Feel free to explore additional options and functionalities by checking the help documentation for each command:
 
 ```bash
 pyquantify [command] --help
 ```
-</div>
 
 
-<h2><a id="ques">:grey_question: FAQ</a></h2>
+## FAQ
+
 
 ### Q: What is Pyquantify?
 
@@ -187,12 +227,15 @@ Originally conceived as a word frequency counter, Pyquantify's development took 
 ### Q: Why the name change from NLPFreq to Pyquantify?
 
 NLPFreq felt limiting and didn't capture the full scope of the project. Pyquantify more accurately reflects its capabilities as a Python-based tool for quantitative data analysis.
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
-<h2> <a id = "ack">:gem: Acknowledgements</a></h2>
+## Acknowledgements
+
+ - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+ - [Awesome README](https://github.com/matiassingers/awesome-readme)
+ - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
 
 - [NeuralNine's Publish Your Own Python Package](https://www.youtube.com/watch?v=tEFkHEKypLI)
-
-<hr/>
-
-**Note:** Pyquantify has undergone thorough testing on Linux, and its functionality is confirmed to work seamlessly. However, it's important to note that when running on Windows Subsystem for Linux (WSL), certain features may have limited functionality due to the absence of the complete Linux toolset in the WSL environment.
